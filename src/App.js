@@ -1,26 +1,25 @@
-import logo from './logo.svg';
-import Features from './Features/Features';
-import './App.css';
+import { Container } from 'react-bootstrap'
+import { Route, Switch } from 'react-router-dom'
 
-function App() {
+// Layout
+import Layout from './layout/Layout'
+
+import Home from './pages/Home'
+import About from './pages/About'
+import NotFound from './pages/NotFound'
+
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div>
-        <Features />
-      </div>
-    </div>
-  );
+    <Layout>
+      <Container>
+        <Switch>
+          <Route path='/' component={Home} exact />
+          <Route path='/about' component={About} />
+          <Route component={NotFound} />
+        </Switch>
+      </Container>
+    </Layout>
+  )
 }
 
-export default App;
+export default App
